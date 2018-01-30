@@ -15,12 +15,19 @@ def parse_mp8_report(xml_file):
 
     root = ET.parse(xml_file).getroot()
 
-    for vln in root.findall("./{%s}vulners/{%s}vulner" %(ns, ns)):
+
+
+
+
+    for vln in root.findall("./{%s}vulners/{%s}vulner" %(ns, ns)): # <content><vulners><vulner>...
         #print (vln.tag)
         print (vln.get("id"))
         print ( "".join(vln.find("./{%s}title" %(ns)).itertext()))# get text between tags
-        for vlnid in vln.findall("./{%s}global_id" %(ns)):
+        for vlnid in vln.findall("./{%s}global_id" %(ns)): # <content><vulners><vulner><global_id>...
             print (vlnid.get("name")+"  "+vlnid.get("value"))
+
+    for host in root.findall("./{%s}data/{%s}host" %(ns, ns)):
+        print(host.get("ip"))
 
 
 
