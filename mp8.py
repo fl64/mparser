@@ -1,8 +1,5 @@
-import sqlite3
-import xlsxwriter
 import argparse
 import sys
-from sqlite3 import Error
 
 try:
     from xml.etree import cElementTree as ET
@@ -32,7 +29,7 @@ def parse_mp8_report(xml_file):
 
 
 parser = argparse.ArgumentParser(description='MP8 XML')
-parser.add_argument('-i', dest="xml_file", help="Путь к файлу отчета MP8", required=True )
+parser.add_argument('-i', dest="xml_file", help="MP8 XML Path", required=True )
 
 try:
     results = parser.parse_args()
